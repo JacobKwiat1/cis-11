@@ -1,8 +1,8 @@
 .global main
 
 .section .data //Initialized Variables
-    bYear: .word 0 //User's birth year
-    year:  .word 0 //Current year
+    bYear: .word 0
+    year:  .word 0
 
 .section .rodata //Readonly Data
     inPat: .asciz "%d"
@@ -14,13 +14,12 @@
 
 .text
 main:
-    //Keep track of where I came from
     push {lr}
 
     //Prompt user to input birth year
-    ldr r0, =prmpt1 //Message
+    ldr r0, =prmpt1
     bl printf
-    //Get user input
+    //user input
     ldr r0, =inPat
     ldr r1, =bYear
     bl scanf
@@ -33,20 +32,16 @@ main:
     ldr r1, =year
     bl scanf
 
-    //Load variables into registers to prep for operations
-    ldr r2, =bYear //Load address
-    ldr r2, [r2]   //Load value
-    ldr r3, =year  //Load address
-    ldr r3, [r3]   //Load value
+    //Load variables into registers
+    ldr r2, =bYear //address
+    ldr r2, [r2]   //value
+    ldr r3, =year  //address
+    ldr r3, [r3]   //value    
+    sub r1, r3, r2
 
-    //Operations
-    sub r1, r3, r2 //r1 = r3 - r2
-
-    //Output result
     ldr r0, =outRslt
     bl printf
 
-    //return 0
     mov r0, #0
 
     //Resume where I left off
