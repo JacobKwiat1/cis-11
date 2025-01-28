@@ -1,0 +1,2 @@
+as -o third.o third.s
+gcc -o a.out third.c third.o
