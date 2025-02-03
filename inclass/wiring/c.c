@@ -6,7 +6,7 @@
 
 int main(){
     //initialize
-    wiringPiSetupGPIO();
+    wiringPiSetupGpio();
     
     //set pin mode
     pinMode(PIN_LED, OUTPUT);
