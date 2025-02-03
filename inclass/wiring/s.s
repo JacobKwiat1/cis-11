@@ -42,7 +42,8 @@ while:
     delayLabel:
         mov r0, #250
         bl delay
-        bal while
+    
+    bal while
 
 mov r0, #0
 pop {pc}
