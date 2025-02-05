@@ -1,5 +1,5 @@
 .global main
-.global .fallingDistance
+.global fallingDistance
 .section .data
     distance: .word 0
     g: .word 9
