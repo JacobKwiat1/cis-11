@@ -105,7 +105,7 @@ main:
 
             ldr r0, =temp
             ldr r0, [r0]
-            bl Fahrenheit
+            bl celsius
             bl Kelvin
             bal KO
         KC:
@@ -121,7 +121,7 @@ main:
             bl Kelvin
             bal KO
         KO:
-            mov r0, r1
+            mov r1, r0
             ldr r0, =outK
             bl printf
         bal finish
@@ -150,6 +150,7 @@ Fahrenheit:
 
 Kelvin:
     push {lr}
-    add r0, #273
+    ldr r1, =#273
+    add r0, r1
     pop {pc}
 
