@@ -69,21 +69,21 @@ sort:
     pop {r4-r8, pc}
 
     outArray:
-    stmdb sp!, {r4-r6, lr}
-    mov r4, #0
-    mov r5, r0
-    mov r6, r1
-    oaWhile:
-        cmp r4, r6
-        bge oaEnd
+        stmdb sp!, {r4-r6, lr}
+        mov r4, #0
+        mov r5, r0
+        mov r6, r1
+        oaWhile:
+            cmp r4, r6
+            bge oaEnd
 
-        ldr r1, [r5], #4
-        ldr r0, =outNum
+            ldr r1, [r5], #4
+            ldr r0, =outNum
+            bl printf
+
+            add r4, #1
+            bal oaWhile
+        oaEnd:
+        ldr r0, =newline
         bl printf
-
-        add r4, #1
-        bal oaWhile
-    oaEnd:
-    ldr r0, =newline
-    bl printf
-    ldmia sp!, {r4-r6, pc}
+        ldmia sp!, {r4-r6, pc}
